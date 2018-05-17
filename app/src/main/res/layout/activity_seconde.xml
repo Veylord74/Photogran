@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:text="@string/tv_instructions" />
 
     <Button
@@ -22,5 +22,13 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/tv_instructions"
         android:text="@string/btn_download"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="390dp"
+        android:id="@+id/rv_photos"
+        android:layout_below="@+id/btn_download"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
