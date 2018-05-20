@@ -11,4 +11,5 @@
     <string name="notification_desc">Photogran a terminé le téléchargement de la liste de photo !</string>
     <string name="channel_name">Notifications Photogran</string>
     <string name="channel_description">Catégorie de notification Photogran</string>
+    <string name="settings_btn">Réglages</string>
 </resources>

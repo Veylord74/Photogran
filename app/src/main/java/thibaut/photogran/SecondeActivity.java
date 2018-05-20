@@ -1,7 +1,5 @@
 package thibaut.photogran;
 
-import android.annotation.TargetApi;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -18,6 +16,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -59,6 +59,20 @@ public class SecondeActivity extends AppCompatActivity {
         rv.setAdapter(new PhotosAdapter(getPhotosFromFile()));
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+            /* DO EDIT */
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public static final String PHOTOS_UPDATE = "thibaut.photogran.PHOTOS_UPDATE";
 
     public class PhotoUpdate extends BroadcastReceiver {
@@ -88,8 +102,6 @@ public class SecondeActivity extends AppCompatActivity {
     }
 
     private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = getString(R.string.channel_name);
             String description = getString(R.string.channel_description);
@@ -97,8 +109,6 @@ public class SecondeActivity extends AppCompatActivity {
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
@@ -112,14 +122,12 @@ public class SecondeActivity extends AppCompatActivity {
         final PendingIntent pendingIntent = PendingIntent.getActivity(this,
                 0, launchNotificationIntent,
                 PendingIntent.FLAG_ONE_SHOT);
-
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.notification)
                 .setContentTitle(getString(R.string.notification_title))
                 .setContentText(getString(R.string.notification_desc))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent);
-
         mNotification.notify(01, mBuilder.build());
     }
 
