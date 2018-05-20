@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Photogran</string>
-    <string name="btn_gallery">Gallery</string>
-    <string name="btn_download">Afficher 10 photos aléatoires</string>
-    <string name="tv_instructions">Photos du jour</string>
+    <string name="btn_gallery">Picture gallery</string>
+    <string name="btn_download">Display random pictures</string>
+    <string name="tv_welcome">Welcome to Photogran</string>
+    <string name="tv_description">Browse a list of random beautiful pictures from the Unsplash API</string>
 </resources>

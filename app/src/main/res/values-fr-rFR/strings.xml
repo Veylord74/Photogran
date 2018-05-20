@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Photogran</string>
+    <string name="btn_gallery">Gallerie photo</string>
+    <string name="btn_download">Afficher des photos aléatoires</string>
+    <string name="tv_instructions">Photos du jour</string>
+    <string name="tv_welcome">Bienvenue sur Photogran</string>
+    <string name="tv_description">Parcourez une liste de superbes photos aléatoires grâce à l\'API Unsplash</string>
+</resources>
