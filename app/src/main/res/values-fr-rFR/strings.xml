@@ -6,4 +6,9 @@
     <string name="tv_instructions">Photos du jour</string>
     <string name="tv_welcome">Bienvenue sur Photogran</string>
     <string name="tv_description">Parcourez une liste de superbes photos aléatoires grâce à l\'API Unsplash</string>
+    <string name="toast">Liste de photos en cours de téléchargement…</string>
+    <string name="notification_title">Photos téléchargées</string>
+    <string name="notification_desc">Photogran a terminé le téléchargement de la liste de photo !</string>
+    <string name="channel_name">Notifications Photogran</string>
+    <string name="channel_description">Catégorie de notification Photogran</string>
 </resources>
