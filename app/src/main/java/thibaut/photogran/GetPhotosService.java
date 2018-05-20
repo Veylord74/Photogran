@@ -42,9 +42,9 @@ public class GetPhotosService extends IntentService {
 
     private void handleActionGetPhotos() {
         Log.d("GetPhotosService", "Thread service name:" + Thread.currentThread().getName());
-        URL url = null;
+        URL url;
         try {
-            url = new URL("https://api.unsplash.com/photos/?client_id=f81da655d58e3b1a931d10d89fa6c7a40f3b8d0efa4b5b2a4e0578c17729bdaa");
+            url = new URL("https://api.unsplash.com/photos/random/?count=10&client_id=f81da655d58e3b1a931d10d89fa6c7a40f3b8d0efa4b5b2a4e0578c17729bdaa");
             HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.connect();
