@@ -60,6 +60,7 @@ public class SecondeActivity extends AppCompatActivity {
         btn_download.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures, search);
+                Toast.makeText(getApplicationContext(), getString(R.string.toast), Toast.LENGTH_SHORT).show();
             }
         });
         IntentFilter intentFilter = new IntentFilter(PHOTOS_UPDATE);
@@ -139,6 +140,7 @@ public class SecondeActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 search = input.getText().toString();
                 GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures, search);
+                Toast.makeText(getApplicationContext(), getString(R.string.toast), Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {

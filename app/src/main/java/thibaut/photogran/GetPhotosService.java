@@ -60,7 +60,6 @@ public class GetPhotosService extends IntentService {
                 copyInputStreamToFile(conn.getInputStream(),
                         new File(getCacheDir(), "photos.json"));
                 Log.d("Service", "photos.json downloading !");
-                Toast.makeText(getApplicationContext(), getString(R.string.toast), Toast.LENGTH_SHORT).show();
                 LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(SecondeActivity.PHOTOS_UPDATE));
             }
         } catch (MalformedURLException e) {

@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 search = input.getText().toString();
                 GetPhotosService.startActionGetPhotos(MainActivity.this, nb_pictures, search);
+                Toast.makeText(getApplicationContext(), getString(R.string.toast), Toast.LENGTH_SHORT).show();
                 createIntent();
             }
         });
