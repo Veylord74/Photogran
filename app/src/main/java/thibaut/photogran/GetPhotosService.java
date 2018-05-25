@@ -20,12 +20,14 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class GetPhotosService extends IntentService {
     private static final String ACTION_GET_PHOTOS = "thibaut.photogran.action.GET_PHOTOS";
+    static int nb_pictures;
 
     public GetPhotosService() {
         super("GetPhotosService");
     }
 
-    public static void startActionGetPhotos(Context context) {
+    public static void startActionGetPhotos(Context context, int nb_pics) {
+        nb_pictures = nb_pics;
         Intent intent = new Intent(context, GetPhotosService.class);
         intent.setAction(ACTION_GET_PHOTOS);
         context.startService(intent);
@@ -45,7 +47,7 @@ public class GetPhotosService extends IntentService {
         Log.d("GetPhotosService", "Thread service name:" + Thread.currentThread().getName());
         URL url;
         try {
-            url = new URL("https://api.unsplash.com/photos/random/?count=10&client_id=f81da655d58e3b1a931d10d89fa6c7a40f3b8d0efa4b5b2a4e0578c17729bdaa");
+            url = new URL("https://api.unsplash.com/photos/random/?count=" + nb_pictures + "&client_id=f81da655d58e3b1a931d10d89fa6c7a40f3b8d0efa4b5b2a4e0578c17729bdaa");
             HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.connect();

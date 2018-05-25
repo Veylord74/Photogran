@@ -10,4 +10,6 @@
     <string name="channel_name">Photogran channel</string>
     <string name="channel_description">Photogran notification channel</string>
     <string name="settings_btn">Settings</string>
+    <string name="dialog_title">Select the number of pictures to be displayed in the gallery</string>
+    <string name="toast_nb_pictures">Pictures count updated</string>
 </resources>
