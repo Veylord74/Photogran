@@ -21,13 +21,15 @@ import javax.net.ssl.HttpsURLConnection;
 public class GetPhotosService extends IntentService {
     private static final String ACTION_GET_PHOTOS = "thibaut.photogran.action.GET_PHOTOS";
     static int nb_pictures;
+    static String search;
 
     public GetPhotosService() {
         super("GetPhotosService");
     }
 
-    public static void startActionGetPhotos(Context context, int nb_pics) {
+    public static void startActionGetPhotos(Context context, int nb_pics, String keyword) {
         nb_pictures = nb_pics;
+        search = keyword;
         Intent intent = new Intent(context, GetPhotosService.class);
         intent.setAction(ACTION_GET_PHOTOS);
         context.startService(intent);
@@ -47,7 +49,10 @@ public class GetPhotosService extends IntentService {
         Log.d("GetPhotosService", "Thread service name:" + Thread.currentThread().getName());
         URL url;
         try {
-            url = new URL("https://api.unsplash.com/photos/random/?count=" + nb_pictures + "&client_id=f81da655d58e3b1a931d10d89fa6c7a40f3b8d0efa4b5b2a4e0578c17729bdaa");
+            if(search != null)
+                url = new URL("https://api.unsplash.com/search/photos?per_page=" + nb_pictures + "&query=" + search + "&client_id=f81da655d58e3b1a931d10d89fa6c7a40f3b8d0efa4b5b2a4e0578c17729bdaa");
+            else
+                url = new URL("https://api.unsplash.com/photos/random/?count=" + nb_pictures + "&client_id=f81da655d58e3b1a931d10d89fa6c7a40f3b8d0efa4b5b2a4e0578c17729bdaa");
             HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.connect();
@@ -55,6 +60,7 @@ public class GetPhotosService extends IntentService {
                 copyInputStreamToFile(conn.getInputStream(),
                         new File(getCacheDir(), "photos.json"));
                 Log.d("Service", "photos.json downloading !");
+                Toast.makeText(getApplicationContext(), getString(R.string.toast), Toast.LENGTH_SHORT).show();
                 LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(SecondeActivity.PHOTOS_UPDATE));
             }
         } catch (MalformedURLException e) {

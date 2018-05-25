@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -40,6 +42,7 @@ public class SecondeActivity extends AppCompatActivity {
     RecyclerView rv;
     int nb_pictures;
     AlertDialog alert;
+    String search;
     CharSequence[] values = {" 5 ", " 10 ", " 15 ", " 20 "};
 
     @Override
@@ -51,12 +54,12 @@ public class SecondeActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         nb_pictures = i.getIntExtra(MainActivity.NB_PIC, 10);
+        search = i.getStringExtra(MainActivity.SEARCH);
 
         Button btn_download = findViewById(R.id.btn_download);
         btn_download.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures);
-                Toast.makeText(getApplicationContext(), getString(R.string.toast), Toast.LENGTH_SHORT).show();
+                GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures, search);
             }
         });
         IntentFilter intentFilter = new IntentFilter(PHOTOS_UPDATE);
@@ -75,13 +78,16 @@ public class SecondeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                createAlertDialog();
+                createImageCountDialog();
+                return true;
+            case R.id.action_search:
+                createSearchDialog();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void createAlertDialog() {
+    public void createImageCountDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SecondeActivity.this);
         builder.setTitle(getString(R.string.dialog_title));
         builder.setSingleChoiceItems(values, -1, new DialogInterface.OnClickListener() {
@@ -91,22 +97,22 @@ public class SecondeActivity extends AppCompatActivity {
                 {
                     case 0:
                         nb_pictures = 5;
-                        GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures);
+                        GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures, search);
                         Toast.makeText(getApplicationContext(), getString(R.string.toast_nb_pictures), Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
                         nb_pictures = 10;
-                        GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures);
+                        GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures, search);
                         Toast.makeText(getApplicationContext(), getString(R.string.toast_nb_pictures), Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
                         nb_pictures = 15;
-                        GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures);
+                        GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures, search);
                         Toast.makeText(getApplicationContext(), getString(R.string.toast_nb_pictures), Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
                         nb_pictures = 20;
-                        GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures);
+                        GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures, search);
                         Toast.makeText(getApplicationContext(), getString(R.string.toast_nb_pictures), Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -114,6 +120,34 @@ public class SecondeActivity extends AppCompatActivity {
             }
         });
         alert = builder.create();
+        alert.show();
+    }
+
+    public void createSearchDialog() {
+        LayoutInflater layoutInflater = LayoutInflater.from(SecondeActivity.this);
+        View promptView = layoutInflater.inflate(R.layout.prompt, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(SecondeActivity.this);
+        builder.setTitle(getString(R.string.search_title));
+        builder.setView(promptView);
+
+        final EditText input = promptView.findViewById(R.id.userInput);
+
+        builder.setCancelable(false);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                search = input.getText().toString();
+                GetPhotosService.startActionGetPhotos(SecondeActivity.this, nb_pictures, search);
+            }
+        });
+        builder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
         alert.show();
     }
 
@@ -135,7 +169,11 @@ public class SecondeActivity extends AppCompatActivity {
             byte[] buffer = new byte[is.available()];
             is.read(buffer);
             is.close();
-            return new JSONArray(new String(buffer, "UTF-8"));
+            String content = new String(buffer, "UTF-8");
+            if(content.startsWith("["))
+                return new JSONArray(content);
+            else
+                return new JSONObject(content).getJSONArray("results");
         } catch(IOException e){
             e.printStackTrace();
             return new JSONArray();

@@ -3,7 +3,7 @@
     <string name="btn_gallery">Picture gallery</string>
     <string name="btn_download">Display random pictures</string>
     <string name="tv_welcome">Welcome to Photogran</string>
-    <string name="tv_description">Browse a list of random beautiful pictures from the Unsplash API</string>
+    <string name="tv_description">Browse a list of beautiful pictures from the Unsplash API</string>
     <string name="toast">Pictures list downloading…</string>
     <string name="notification_title">Pictures downloaded</string>
     <string name="notification_desc">Photogran has finished downloading the pictures list !</string>
@@ -12,4 +12,6 @@
     <string name="settings_btn">Settings</string>
     <string name="dialog_title">Select the number of pictures to be displayed in the gallery</string>
     <string name="toast_nb_pictures">Pictures count updated</string>
+    <string name="search_title">Picture search</string>
+    <string name="cancel">Cancel</string>
 </resources>

@@ -5,7 +5,7 @@
     <string name="btn_download">Afficher des photos aléatoires</string>
     <string name="tv_instructions">Photos du jour</string>
     <string name="tv_welcome">Bienvenue sur Photogran</string>
-    <string name="tv_description">Parcourez une liste de superbes photos aléatoires grâce à l\'API Unsplash</string>
+    <string name="tv_description">Parcourez une liste de superbes photos grâce à l\'API Unsplash</string>
     <string name="toast">Liste de photos en cours de téléchargement…</string>
     <string name="notification_title">Photos téléchargées</string>
     <string name="notification_desc">Photogran a terminé le téléchargement de la liste de photo !</string>
@@ -14,4 +14,6 @@
     <string name="settings_btn">Réglages</string>
     <string name="dialog_title">Sélectionnez le nombre d\'images à afficher dans la gallerie</string>
     <string name="toast_nb_pictures">Nombre d\'images mis à jour</string>
+    <string name="search_title">Recherche d\'images</string>
+    <string name="cancel">Annuler</string>
 </resources>
