@@ -3,6 +3,7 @@
     <string name="app_name">Photogran</string>
     <string name="btn_gallery">Gallerie photo</string>
     <string name="btn_download">Afficher des photos aléatoires</string>
+    <string name="btn_unsplash">Visiter Unsplash</string>
     <string name="tv_instructions">Photos du jour</string>
     <string name="tv_welcome">Bienvenue sur Photogran</string>
     <string name="tv_description">Parcourez une liste de superbes photos grâce à l\'API Unsplash</string>

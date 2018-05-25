@@ -2,6 +2,7 @@ package thibaut.photogran;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
         btn_gallery.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 createIntent();
+            }
+        });
+
+        Button btn_unsplash = findViewById(R.id.btn_unsplash);
+        btn_unsplash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://unsplash.com/";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
             }
         });
     }

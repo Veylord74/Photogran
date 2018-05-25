@@ -2,6 +2,7 @@
     <string name="app_name">Photogran</string>
     <string name="btn_gallery">Picture gallery</string>
     <string name="btn_download">Display random pictures</string>
+    <string name="btn_unsplash">Visit Unsplash</string>
     <string name="tv_welcome">Welcome to Photogran</string>
     <string name="tv_description">Browse a list of beautiful pictures from the Unsplash API</string>
     <string name="toast">Pictures list downloading…</string>

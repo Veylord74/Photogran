@@ -42,4 +42,18 @@
         android:text="@string/btn_gallery"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/btn_unsplash"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_gallery"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:elevation="0dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/btn_unsplash"
+        android:textAllCaps="true"
+        android:textStyle="bold" />
+
 </RelativeLayout>

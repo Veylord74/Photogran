@@ -11,9 +11,10 @@
         android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:fontFamily="sans-serif-condensed"
+        android:paddingVertical="0dp"
         android:text="@string/tv_welcome"
         android:textColor="@android:color/white"
         android:textSize="36sp" />
@@ -24,7 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_welcome"
         android:layout_centerHorizontal="true"
-        android:layout_margin="25dp"
         android:text="@string/tv_description"
         android:textAlignment="center"
         android:textColor="@android:color/white"
@@ -40,6 +40,20 @@
         android:layout_marginTop="50dp"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/btn_gallery"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_unsplash"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:elevation="0dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/btn_unsplash"
+        android:textAllCaps="true"
         android:textStyle="bold" />
 
 </RelativeLayout>
