@@ -15,7 +15,7 @@ Photogran est constituée de deux écrans:
 
 * Un écran d'accueil disposant d'un message d'accueil, d'une brève description de l'application, d'un bouton permettant d'accéder à la seconde activité et d'un autre bouton permettant d'ouvrir le site [Unsplash](https://unsplash.com/) dans un navigateur. Cette activité dispose d'un layout légèrement modifié lorsque le téléphone est en mode paysage afin d'éviter une superposition des éléments et de faire ressortir le bouton d'accès à la galerie grâce une couleur plus adaptée par rapport à sa position sur l'image de fond.
 
-* Un écran nommé "Gallerie" qui permet d'afficher des photos aléatoires parmi une selection de photos de l'API unsplash qui change tous les jours d'après mes observations.
+* Un écran nommé "Gallerie" qui permet d'afficher des photos aléatoires parmi une selection de photos de l'API unsplash qui change régulièrement.
 
 ---
 
